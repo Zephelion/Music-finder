@@ -8,12 +8,20 @@ const SearchBar = () => {
 
     const fetchMusic = async (e) => {
         e.preventDefault();
-        const api = await fetch(`http://api.musixmatch.com/ws/1.1/track.search?q_track=${searchTerm}&page_size=10&page=1&s_track_rating=desc&apikey=${process.env.REACT_APP_API_KEY}`);
 
-        const data = await api.json();
-        setSearchResults(data);
+        const url = `https://api.musixmatch.com/ws/1.1/track.search?q_lyrics=${searchTerm}&page_size=10000&page=1&s_track_rating=desc&apikey=${process.env.REACT_APP_API_KEY}`
+        const response = await fetch(url, {
+            method: "GET",
+            mode: "no-cors",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
 
-        console.log(searchResults);
+        const data = await response.json();
+
+        console.log(data);
+
     }
 
   return (
