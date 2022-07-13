@@ -45,16 +45,6 @@ const SearchBar = () => {
             console.log(err);
         })
 
-        // console.log(response);
-
-        // setSearchResults(response);
-
-        // console.log(searchResults);
-
-        // const data = await response.json();
-
-        // console.log(data);
-
     }
 
   return (
