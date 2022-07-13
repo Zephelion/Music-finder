@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 
 const SearchBar = () => {
 
@@ -9,18 +10,50 @@ const SearchBar = () => {
     const fetchMusic = async (e) => {
         e.preventDefault();
 
-        const url = `https://api.musixmatch.com/ws/1.1/track.search?q_lyrics=${searchTerm}&page_size=10000&page=1&s_track_rating=desc&apikey=${process.env.REACT_APP_API_KEY}`
-        const response = await fetch(url, {
-            method: "GET",
-            mode: "no-cors",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        });
+        const url = `https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.search?q_lyrics=${searchTerm}&page_size=10000&page=1&s_track_rating=desc&apikey=${process.env.REACT_APP_API_KEY}`;
+        // const test = "https://www.balldontlie.io/api/v1/players";
+        // const response = await fetch(url, {
+        //     method: "GET",
+        //     mode: "no-cors",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //         'Access-Control-Allow-Origin':'*',
+        //         'Access-Control-Allow-Methods':'GET,POST,PATCH,OPTIONS',
+        //         "Access-Control-Request-Headers": 'Content-Type, Authorization'
+        //     }
+        // });
 
-        const data = await response.json();
+        axios({
+            url: url,
+            method:"GET",
+            // mode: 'no-cors',
+            // headers:{
+            //     "Content-Type": "application/json",
+            //     "Access-Control-Allow-Origin": "*",
+            //     "Access-Control-Request-Headers": 'Content-Type, Authorization'
+    
+            // }
+        })
+        .then(res => {
+            console.log(res);
+            setSearchResults(res.data.message.body.track_list);
+        })
+        .then(() => {
+            console.log(searchResults);
+        })
+        .catch(err =>{
+            console.log(err);
+        })
 
-        console.log(data);
+        // console.log(response);
+
+        // setSearchResults(response);
+
+        // console.log(searchResults);
+
+        // const data = await response.json();
+
+        // console.log(data);
 
     }
 
