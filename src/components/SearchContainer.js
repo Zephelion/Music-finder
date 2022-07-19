@@ -1,13 +1,19 @@
 import SearchBar from "./SearchBar"
 
-const Search = () => {
+const SearchContainer = () => {
+
+	const pull_data = (data) => {
+		console.log(data);
+	}
+
   return (
-	<div className="min-h-screen bg-white flex justify-center items-center">
+
 		<div className="container mx-auto bg-white rounded-lg p-14 drop-shadow-lg border-solid border-2 border-gray-100">
-			<SearchBar />
+			<SearchBar
+				func = {pull_data}
+			/>
 		</div>
-	</div>
   )
 }
 
-export default Search
+export default SearchContainer

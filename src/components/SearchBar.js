@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-const SearchBar = () => {
+const SearchBar = ({func}) => {
 
     const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState([]);
@@ -11,35 +11,17 @@ const SearchBar = () => {
         e.preventDefault();
 
         const url = `https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.search?q_lyrics=${searchTerm}&page_size=10000&page=1&s_track_rating=desc&apikey=${process.env.REACT_APP_API_KEY}`;
-        // const test = "https://www.balldontlie.io/api/v1/players";
-        // const response = await fetch(url, {
-        //     method: "GET",
-        //     mode: "no-cors",
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //         'Access-Control-Allow-Origin':'*',
-        //         'Access-Control-Allow-Methods':'GET,POST,PATCH,OPTIONS',
-        //         "Access-Control-Request-Headers": 'Content-Type, Authorization'
-        //     }
-        // });
 
         axios({
             url: url,
             method:"GET",
-            // mode: 'no-cors',
-            // headers:{
-            //     "Content-Type": "application/json",
-            //     "Access-Control-Allow-Origin": "*",
-            //     "Access-Control-Request-Headers": 'Content-Type, Authorization'
-    
-            // }
         })
         .then(res => {
             console.log(res);
             setSearchResults(res.data.message.body.track_list);
         })
-        .then(() => {
-            console.log(searchResults);
+        .then(res =>{
+            func(searchResults);
         })
         .catch(err =>{
             console.log(err);
@@ -59,6 +41,7 @@ const SearchBar = () => {
                 </div>
             </div>
     </form>
+
   )
 
 }
