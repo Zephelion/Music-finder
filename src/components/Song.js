@@ -1,7 +1,7 @@
-const Song = () => {
+const Song = ({song}) => {
   return (
     <div>
-        <p>Yeet yuh</p>
+        <p>{song.track_name}</p>
     </div>
   )
 }
