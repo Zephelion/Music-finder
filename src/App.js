@@ -3,8 +3,13 @@ import SearchContainer from './components/SearchContainer';
 import axios from "axios";
 import Songs from './components/Songs';
 import {useState} from 'react';
+import {useEffect} from 'react';
 
 function App() {
+
+  useEffect(() => {
+    document.title = "Music Finder";
+  },[]);
 
   const [searchResults, setSearchResults] = useState([]);
 
@@ -24,12 +29,12 @@ function App() {
         console.log(err);
     })
 
-  }
+  };
 
 
   return (
     <div>
-      <div className="my-10 bg-white flex justify-center items-center">
+      <div className="min-h-screen bg-white flex justify-center items-center">
         <SearchContainer func={getSongs} />
       </div>
       
