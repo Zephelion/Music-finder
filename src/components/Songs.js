@@ -1,14 +1,14 @@
-// import Song from './Song'
+import Song from './Song'
 
 const Songs = ({songs}) => {
   return (
     <>
-      {songs.map((song, index) => (
-        // <Song key={song.track_id} song={song} />
-        <p key={index}>
-          {song.track.track_name}
-        </p>
-      ))}
+      <div className="container mx-auto">
+
+        {songs.map((song) => (
+          <Song key={song.track.track_id} song={song} />
+        ))}
+      </div>
     
     </>
   )
