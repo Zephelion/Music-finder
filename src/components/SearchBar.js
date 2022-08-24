@@ -8,8 +8,13 @@ const SearchBar = ({songs}) => {
     
     const sendSearchTerm = async (e) => {
         e.preventDefault();
+        if(searchTerm !== ""){
+            songs(searchTerm);
+
+        }else{
+            alert("Please enter a search term");
+        }
         
-        songs(searchTerm);
         
 
     }
