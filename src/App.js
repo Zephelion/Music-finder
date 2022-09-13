@@ -46,7 +46,6 @@ function App() {
   };
 
 
-
   return (
     <div>
       <div className="minimum bg-white flex justify-center items-center">
@@ -54,9 +53,11 @@ function App() {
       </div>
     
       {loading ? <Loading /> : null}
-      {!hasResults && hasSearchTerm ? <p>No songs matching the lyrics</p> : <Songs songs={searchResults} />  }
+      {!hasResults && hasSearchTerm ? <p className='error'>No songs matching the lyrics</p> : <Songs songs={searchResults} />  }
     </div>
   );
+
+
 }
 
 export default App;

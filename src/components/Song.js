@@ -1,5 +1,6 @@
 import axios from "axios";
 import {useState} from 'react';
+// import Modal from "./Modal";
 
 const Song = ({song, lyric}) => {
 
@@ -27,6 +28,8 @@ const Song = ({song, lyric}) => {
         <p className="text-lg font-semibold">{song.track.track_name} - {song.track.artist_name}</p>
         <p className="text-md font-medium">{song.track.album_name}</p>
       </div>
+
+
     </div>
   )
 }

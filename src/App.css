@@ -44,3 +44,9 @@ body{
 div.minimum{
   min-height: 68vh;
 }
+
+p.error{
+  color: red;
+  text-align: center;
+  font-size: 1.5em;
+}
