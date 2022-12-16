@@ -2,6 +2,16 @@ body{
   padding: 13px;
 }
 
+::-webkit-scrollbar {
+  width: 5px;
+  background-color: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
 .App {
   text-align: center;
 }
